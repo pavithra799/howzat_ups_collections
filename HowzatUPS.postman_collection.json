@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "4ba83342-4adc-4128-a00e-737601729b41",
+		"name": "HowzatUPS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f2f5f09f-2f56-4a1d-ac43-60aa1b3ab728",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"  pm.response.to.have.status(400);});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"password\": \"thdadhada\",\n  \"phone\": \"1111222669\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hzt_stage}}/users/",
+					"host": [
+						"{{hzt_stage}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Withdraw",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "231f91c7-9b1a-436e-8195-574c0c2dfb04",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{hzt_stage}}withdraw/12",
+					"host": [
+						"{{hzt_stage}}withdraw"
+					],
+					"path": [
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Place withdraw",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5f4af28d-688f-4111-a597-91425111356c",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"  pm.response.to.have.status(201);});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"amount\": 200,\n  \"context\": {},\n  \"type\": 4,\n  \"user_id\": 16\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hzt_stage}}withdraw/",
+					"host": [
+						"{{hzt_stage}}withdraw"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Withdraw Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dcc6f7ad-a764-4c8b-a873-c9ad5fa9f913",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () ",
+							"{",
+							"  pm.response.to.have.status(200);",
+							"  }",
+							"  );"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{hzt_stage}}withdraw?s=user_id%3D%3D16",
+					"host": [
+						"{{hzt_stage}}withdraw"
+					],
+					"query": [
+						{
+							"key": "s",
+							"value": "user_id%3D%3D16"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Withdrawal Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "36f240c2-b0a3-4356-a9c6-6439b6edef9c",
+						"exec": [
+							"pm.test(\"status code is 200\", function ()",
+							"{",
+							"   pm.response.to.have.status(200);",
+							"}        ",
+							");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"context\": {},\n  \"status\": \"APPROVED\",\n  \"type\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hzt_stage}}withdraw/12",
+					"host": [
+						"{{hzt_stage}}withdraw"
+					],
+					"path": [
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Withdraw Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9338c8fd-4b29-4147-94cd-e17407656db1",
+						"exec": [
+							"pm.test(\"status code is 400\", function ()",
+							"{",
+							"   pm.response.to.have.status(400);",
+							"}        ",
+							");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{hzt_stage}}withdraw/12/cancel",
+					"host": [
+						"{{hzt_stage}}withdraw"
+					],
+					"path": [
+						"12",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Status Change",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cd2b7275-ffeb-49a0-8135-2b7553e5fcc1",
+						"exec": [
+							"pm.test(\"Status code is 204\", function()",
+							"{",
+							"    pm.response.to.have.status(204);",
+							"}",
+							");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"context\": {},\n  \"status\": \"BLOCKED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hzt_stage}}/users/15/status",
+					"host": [
+						"{{hzt_stage}}"
+					],
+					"path": [
+						"users",
+						"15",
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "secret",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4dd3dba1-19e0-48e8-91c8-23c72411cee7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b3525597-02bf-4805-bcd8-cc2dbe100b16",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "adb901a3-6f98-4029-8eaf-9846d79892f1",
+			"key": "hzt_stage",
+			"value": "http://ups.howzatfantasy.com/ups/api/userprofileservice/"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
